@@ -16,7 +16,7 @@ public class AulasView {
         System.out.println("4. Actualizar aula");
         System.out.println("5. Eliminar aula");
         System.out.println("0. Volver al menú principal");
-        System.out.println("Seleccione una opción: ");
+        System.out.print("Seleccione una opción: ");
         return scanner.nextInt();
     }
 
