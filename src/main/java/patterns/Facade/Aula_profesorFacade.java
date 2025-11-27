@@ -1,10 +1,10 @@
-package patterns.Facade;
+    package patterns.Facade;
 
 import dao.IBaseDAO;
 import java.util.List;
 import model.Aula_profesor;
 
-public class Aula_profesorFacade {
+public class Aula_profesorFacade implements IFacade<Aula_profesor> {
 
     private final IBaseDAO<Aula_profesor> dao;
 
@@ -12,23 +12,28 @@ public class Aula_profesorFacade {
         this.dao = dao;
     }
 
-    public boolean crearAsignacion(Aula_profesor asignacion) {
+    @Override
+    public boolean crearEntidad(Aula_profesor asignacion) {
         return dao.create(asignacion);
     }
 
-    public Aula_profesor verAsignaciones(int id) {
+    @Override
+    public Aula_profesor verEntidad(int id) {
         return dao.read(id);
     }
 
-    public List<Aula_profesor> verListaAsignaciones() {
+    @Override
+    public List<Aula_profesor> listarEntidades() {
         return dao.readall();
     }
 
-    public boolean actualizarAsignaciones(Aula_profesor asignacion) {
+    @Override
+    public boolean actualizarEntidad(Aula_profesor asignacion) {
         return dao.update(asignacion);
     }
 
-    public boolean eliminarAsignacion(int id) {
+    @Override
+    public boolean eliminarEntidad(int id) {
         return dao.delete(id);
     }
 }

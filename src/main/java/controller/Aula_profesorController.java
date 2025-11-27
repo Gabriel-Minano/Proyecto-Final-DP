@@ -1,15 +1,15 @@
 package controller;
 
 import model.Aula_profesor;
-import patterns.Facade.Aula_profesorFacade;
+import patterns.Facade.IFacade;
 import view.Aula_profesorView;
 
 public class Aula_profesorController {
 
     private final Aula_profesorView view;
-    private final Aula_profesorFacade facade;
+    private final IFacade<Aula_profesor> facade;
 
-    public Aula_profesorController(Aula_profesorView view, Aula_profesorFacade facade) {
+    public Aula_profesorController(Aula_profesorView view, IFacade<Aula_profesor> facade) {
         this.view = view;
         this.facade = facade;
     }
@@ -41,26 +41,26 @@ public class Aula_profesorController {
 
     private void crear() {
         Aula_profesor ap = view.pedirDatosAulaProfesor();
-        boolean ok = facade.crearAsignacion(ap);
+        boolean ok = facade.crearEntidad(ap);
 
         view.mostrarMensaje(ok ? "Asignación creada." : "Error al crear.");
     }
 
     private void buscar() {
         int id = view.pedirId();
-        Aula_profesor ap = facade.verAsignaciones(id);
+        Aula_profesor ap = facade.verEntidad(id);
 
         view.mostrarAsignacion(ap);
     }
 
     private void listar() {
-        view.mostrarLista(facade.verListaAsignaciones());
+        view.mostrarLista(facade.listarEntidades());
     }
 
     private void actualizar() {
         int id = view.pedirId();
 
-        Aula_profesor actual = facade.verAsignaciones(id);
+        Aula_profesor actual = facade.verEntidad(id);
 
         if (actual == null || actual.getId_asignacion() == 0) {
             view.mostrarMensaje("No existe la asignación.");
@@ -70,7 +70,7 @@ public class Aula_profesorController {
         Aula_profesor nuevosDatos = view.pedirDatosParaActualizar();
         nuevosDatos.setId_asignacion(id);
 
-        boolean ok = facade.actualizarAsignaciones(nuevosDatos);
+        boolean ok = facade.actualizarEntidad(nuevosDatos);
 
         view.mostrarMensaje(ok ? "Actualizado correctamente." : "No se pudo actualizar.");
     }
@@ -78,7 +78,7 @@ public class Aula_profesorController {
     private void eliminar() {
         int id = view.pedirId();
 
-        boolean ok = facade.eliminarAsignacion(id);
+        boolean ok = facade.eliminarEntidad(id);
 
         view.mostrarMensaje(ok ? "Eliminado correctamente." : "Error al eliminar.");
     }

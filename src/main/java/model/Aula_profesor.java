@@ -1,7 +1,13 @@
 package model;
 
 public class Aula_profesor {
-
+    //CORRECCIÓN A FUTURO
+    /*
+    No es necesario guardar un objeto entero, solo bastaba con
+    hacer un int id_aula, puesto que así más memoria y es más eficiente.
+    Por otro lado, como no se usará después el nombre u otro atributo
+    no era necesario poner un objeto.
+    */
     private int id_asignacion;
     private Aulas aula;
     private Profesores profesor;

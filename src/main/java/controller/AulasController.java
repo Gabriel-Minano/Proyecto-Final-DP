@@ -1,15 +1,15 @@
 package controller;
 
 import model.Aulas;
-import patterns.Facade.AulasFacade;
+import patterns.Facade.IFacade;
 import view.AulasView;
 
 public class AulasController {
 
     private final AulasView view;
-    private final AulasFacade facade;
+    private final IFacade<Aulas> facade;
 
-    public AulasController(AulasView view, AulasFacade facade) {
+    public AulasController(AulasView view, IFacade<Aulas> facade) {
         this.view = view;
         this.facade = facade;
     }
@@ -41,26 +41,26 @@ public class AulasController {
 
     private void crear() {
         Aulas a = view.pedirDatosAulas();
-        boolean ok = facade.crearAula(a);
+        boolean ok = facade.crearEntidad(a);
 
         view.mostrarMensaje(ok ? "Aula creada." : "Error al crear.");
     }
 
     private void buscar() {
         int id = view.pedirId();
-        Aulas a = facade.verAulas(id);
+        Aulas a = facade.verEntidad(id);
 
         view.mostrarAula(a);
     }
 
     private void listar() {
-        view.mostrarLista(facade.verListaAulas());
+        view.mostrarLista(facade.listarEntidades());
     }
 
     private void actualizar() {
         int id = view.pedirId();
 
-        Aulas actual = facade.verAulas(id);
+        Aulas actual = facade.verEntidad(id);
 
         if (actual == null || actual.getId_aula() == 0) {
             view.mostrarMensaje("No existe el aula.");
@@ -70,7 +70,7 @@ public class AulasController {
         Aulas nuevosDatos = view.pedirDatosParaActualizar();
         nuevosDatos.setId_aula(id);
 
-        boolean ok = facade.actualizarAulas(nuevosDatos);
+        boolean ok = facade.actualizarEntidad(nuevosDatos);
 
         view.mostrarMensaje(ok ? "Actualizado correctamente." : "No se pudo actualizar.");
     }
@@ -78,7 +78,7 @@ public class AulasController {
     private void eliminar() {
         int id = view.pedirId();
 
-        boolean ok = facade.eliminarAulas(id);
+        boolean ok = facade.eliminarEntidad(id);
 
         view.mostrarMensaje(ok ? "Eliminado correctamente." : "Error al eliminar.");
     }

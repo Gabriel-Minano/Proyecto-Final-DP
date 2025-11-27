@@ -1,15 +1,15 @@
 package controller;
 
 import model.Profesores;
-import patterns.Facade.ProfesoresFacade;
+import patterns.Facade.IFacade;
 import view.ProfesoresView;
 
 public class ProfesoresController {
 
     private final ProfesoresView view;
-    private final ProfesoresFacade facade;
+    private final IFacade<Profesores> facade;
 
-    public ProfesoresController(ProfesoresView view, ProfesoresFacade facade) {
+    public ProfesoresController(ProfesoresView view, IFacade<Profesores> facade) {
         this.view = view;
         this.facade = facade;
     }
@@ -41,25 +41,25 @@ public class ProfesoresController {
 
     private void crear() {
         Profesores p = view.pedirDatosProfesor();
-        boolean ok = facade.crearProfesor(p);
+        boolean ok = facade.crearEntidad(p);
 
         view.mostrarMensaje(ok ? "Profesor creado." : "Error al crear.");
     }
 
     private void buscar() {
         int id = view.pedirId();
-        Profesores p = facade.verProfesores(id);
+        Profesores p = facade.verEntidad(id);
 
         view.mostrarProfesor(p);
     }
 
     private void listar() {
-        view.mostrarLista(facade.verListaProfesores());
+        view.mostrarLista(facade.listarEntidades());
     }
 
     private void actualizar() {
         int id = view.pedirId();
-        Profesores actual = facade.verProfesores(id);
+        Profesores actual = facade.verEntidad(id);
 
         if (actual == null || actual.getId_profesor() == 0) {
             view.mostrarMensaje("No existe el profesor");
@@ -67,13 +67,13 @@ public class ProfesoresController {
         }
         Profesores nuevosDatos = view.pedirDatosParaActualizar(id);
 
-        boolean ok = facade.actualizarProfesores(nuevosDatos);
+        boolean ok = facade.actualizarEntidad(nuevosDatos);
         view.mostrarMensaje(ok ? "Actualizado correctamente." : "No se pudo actualizar.");
     }
 
     private void eliminar() {
         int id = view.pedirId();
-        boolean ok = facade.eliminarProfesor(id);
+        boolean ok = facade.eliminarEntidad(id);
 
         view.mostrarMensaje(ok ? "Eliminado correctamente." : "Error al eliminar.");
     }

@@ -24,7 +24,6 @@ public class MainController {
         estrategias.put(3, new ModuloAlumnosStrategy());
         estrategias.put(4, new ModuloAulasStrategy());
         estrategias.put(5, new ModuloAula_profesorStrategy());
-        //Falta poner la de Asignaciones
     }
 
     public void iniciar() {

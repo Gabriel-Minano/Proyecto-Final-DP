@@ -4,7 +4,7 @@ import dao.IBaseDAO;
 import java.util.List;
 import model.Profesores;
 
-public class ProfesoresFacade {
+public class ProfesoresFacade implements IFacade<Profesores> {
 
     private final IBaseDAO<Profesores> dao;
 
@@ -12,23 +12,28 @@ public class ProfesoresFacade {
         this.dao = dao;
     }
 
-    public boolean crearProfesor(Profesores profesor) {
+    @Override
+    public boolean crearEntidad(Profesores profesor) {
         return dao.create(profesor);
     }
 
-    public Profesores verProfesores(int id) {
+    @Override
+    public Profesores verEntidad(int id) {
         return dao.read(id);
     }
 
-    public List<Profesores> verListaProfesores() {
+    @Override
+    public List<Profesores> listarEntidades() {
         return dao.readall();
     }
 
-    public boolean actualizarProfesores(Profesores profesor) {
+    @Override
+    public boolean actualizarEntidad(Profesores profesor) {
         return dao.update(profesor);
     }
 
-    public boolean eliminarProfesor(int id) {
+    @Override
+    public boolean eliminarEntidad(int id) {
         return dao.delete(id);
     }
 }

@@ -4,7 +4,7 @@ import dao.IBaseDAO;
 import java.util.List;
 import model.Administradores;
 
-public class AdministradoresFacade {
+public class AdministradoresFacade implements IFacade<Administradores> {
 
     private final IBaseDAO<Administradores> dao;
 
@@ -12,23 +12,28 @@ public class AdministradoresFacade {
         this.dao = dao;
     }
 
-    public boolean crearAdministrador(Administradores admin) {
+    @Override
+    public boolean crearEntidad(Administradores admin) {
         return dao.create(admin);
     }
 
-    public Administradores verAdministradores(int id) {
+    @Override
+    public Administradores verEntidad(int id) {
         return dao.read(id);
     }
 
-    public List<Administradores> verListaAdministradores() {
+    @Override
+    public List<Administradores> listarEntidades() {
         return dao.readall();
     }
 
-    public boolean actualizarAdministradores(Administradores admin) {
+    @Override
+    public boolean actualizarEntidad(Administradores admin) {
         return dao.update(admin);
     }
 
-    public boolean eliminarAdministrador(int id) {
+    @Override
+    public boolean eliminarEntidad(int id) {
         return dao.delete(id);
     }
 }
