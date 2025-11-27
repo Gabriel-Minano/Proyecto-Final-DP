@@ -1,15 +1,15 @@
 package controller;
 
 import model.Administradores;
-import patterns.Facade.AdministradoresFacade;
+import patterns.Facade.IFacade;
 import view.AdministradoresView;
 
 public class AdministradoresController {
 
     private final AdministradoresView view;
-    private final AdministradoresFacade facade;
+    private final IFacade<Administradores> facade;
 
-    public AdministradoresController(AdministradoresView view, AdministradoresFacade facade) {
+    public AdministradoresController(AdministradoresView view, IFacade<Administradores> facade) {
         this.view = view;
         this.facade = facade;
     }
@@ -41,26 +41,26 @@ public class AdministradoresController {
 
     private void crear() {
         Administradores a = view.pedirDatosAdministradores();
-        boolean ok = facade.crearAdministrador(a);
+        boolean ok = facade.crearEntidad(a);
 
         view.mostrarMensaje(ok ? "Administrador creado." : "Error al crear.");
     }
 
     private void buscar() {
         int id = view.pedirId();
-        Administradores a = facade.verAdministradores(id);
+        Administradores a = facade.verEntidad(id);
 
         view.mostrarAdministrador(a);
     }
 
     private void listar() {
-        view.mostrarLista(facade.verListaAdministradores());
+        view.mostrarLista(facade.listarEntidades());
     }
 
     private void actualizar() {
         int id = view.pedirId();
 
-        Administradores actual = facade.verAdministradores(id);
+        Administradores actual = facade.verEntidad(id);
 
         if (actual == null || actual.getId_admin() == 0) {
             view.mostrarMensaje("No existe el administrador.");
@@ -70,7 +70,7 @@ public class AdministradoresController {
         Administradores nuevosDatos = view.pedirDatosParaActualizar();
         nuevosDatos.setId_admin(id);
 
-        boolean ok = facade.actualizarAdministradores(nuevosDatos);
+        boolean ok = facade.actualizarEntidad(nuevosDatos);
 
         view.mostrarMensaje(ok ? "Actualizado correctamente." : "No se pudo actualizar.");
     }
@@ -78,7 +78,7 @@ public class AdministradoresController {
     private void eliminar() {
         int id = view.pedirId();
 
-        boolean ok = facade.eliminarAdministrador(id);
+        boolean ok = facade.eliminarEntidad(id);
 
         view.mostrarMensaje(ok ? "Eliminado correctamente." : "Error al eliminar.");
     }
