@@ -1,5 +1,5 @@
 **_Inicializar la aplicación_**
-1. Para ejecutar correctamente la aplicación, es recomendable utilizar Java 21 o superior para evitar posibles errores. También se debe crear una base de datos igual a la presentada en el punto anterior, con el nombre “colegio”. En caso contrario, puedes usar el script incluido en el proyecto, dentro del paquete “database”, y ejecutarlo mediante MySQL Workbench. 
+1. Para ejecutar correctamente la aplicación, es recomendable utilizar Java 21 o superior para evitar posibles errores. También se debe crear una base de datos, usar el script incluido en el proyecto, dentro del paquete “database”, y ejecutarlo mediante MySQL Workbench. 
 
 2. La tabla “administradores” requiere al menos un registro para poder iniciar sesión. Por motivos académicos, el script ya incluye la inserción de un usuario “ADMIN”, por lo que no necesitarás agregarlo manualmente. 
 
