@@ -62,7 +62,7 @@ public class AlumnosController {
         Alumnos actual = facade.verEntidad(id);
 
         if (actual == null || actual.getId_alumno() == 0) {
-            view.mostrarMensaje("No existe el administrador");
+            view.mostrarMensaje("No existe el alumno");
             return;
         }
         Alumnos nuevosDatos = view.pedirDatosParaActualizar(id);
