@@ -15,6 +15,8 @@ public class formMenu extends javax.swing.JFrame {
      */
     public formMenu() {
         initComponents();
+        setTitle("Menú de gestión");
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         pnl_Alumnos.setVisible(false);
         pnl_Aulas.setVisible(false);
         pnl_Profesores.setVisible(false);
@@ -46,6 +48,7 @@ public class formMenu extends javax.swing.JFrame {
         btn_Salir = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         pnl_inicio = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
         pnl_Alumnos = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -147,6 +150,7 @@ public class formMenu extends javax.swing.JFrame {
         jSeparator23 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -274,17 +278,15 @@ public class formMenu extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.CardLayout());
 
         pnl_inicio.setBackground(new java.awt.Color(0, 102, 204));
+        pnl_inicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout pnl_inicioLayout = new javax.swing.GroupLayout(pnl_inicio);
-        pnl_inicio.setLayout(pnl_inicioLayout);
-        pnl_inicioLayout.setHorizontalGroup(
-            pnl_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
-        );
-        pnl_inicioLayout.setVerticalGroup(
-            pnl_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
+        jLabel24.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("BIENVENIDO");
+        jLabel24.setOpaque(true);
+        pnl_inicio.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1090, 70));
 
         jPanel4.add(pnl_inicio, "card2");
 
@@ -1583,6 +1585,7 @@ public class formMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
