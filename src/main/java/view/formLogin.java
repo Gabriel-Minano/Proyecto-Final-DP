@@ -83,7 +83,7 @@ public class formLogin extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\OneDrive\\Escritorio\\Iconos\\persona.png")); // NOI18N
         jLabel1.setText("Login");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panel1_jpnl.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 260, 100));
 
         salir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -103,6 +103,7 @@ public class formLogin extends javax.swing.JFrame {
         btn_ingresar.setForeground(new java.awt.Color(255, 255, 255));
         btn_ingresar.setText("Ingresar");
         btn_ingresar.setBorder(null);
+        btn_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ingresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
