@@ -21,7 +21,7 @@ public class formLogin extends javax.swing.JFrame {
     public formLogin() {
         initComponents();
         setTitle("Inicia sesión");
-        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -47,7 +47,6 @@ public class formLogin extends javax.swing.JFrame {
         btn_ingresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -144,7 +143,7 @@ public class formLogin extends javax.swing.JFrame {
         if (!login.iniciarSesion(usuario, contrasenha)) {
             JOptionPane.showMessageDialog(null, "Credenciales incorrectas, intente otra vez", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            formMenu ir = new formMenu();
+            formMenu ir = formMenu.getInstance();
             ir.setVisible(true);
             this.setVisible(false);
         }

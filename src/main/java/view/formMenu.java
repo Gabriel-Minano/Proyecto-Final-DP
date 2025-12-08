@@ -4,6 +4,12 @@
  */
 package view;
 
+import controller.MainController;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Alumnos;
+
 /**
  *
  * @author USER
@@ -13,15 +19,31 @@ public class formMenu extends javax.swing.JFrame {
     /**
      * Creates new form FrameMenu
      */
-    public formMenu() {
+    private final MainController controller;
+    private static volatile formMenu instance;
+
+    private formMenu() {
         initComponents();
         setTitle("Menú de gestión");
-        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         pnl_Alumnos.setVisible(false);
         pnl_Aulas.setVisible(false);
         pnl_Profesores.setVisible(false);
         pnl_asignaciones.setVisible(false);
         pnl_inicio.setVisible(true);
+        this.controller = new MainController(this);
+        System.out.println("Iniciando interfaz del menú principal");
+    }
+
+    public static formMenu getInstance() {
+        if (instance == null) {
+            synchronized (formMenu.class) {
+                if (instance == null) {
+                    instance = new formMenu();
+                }
+            }
+        }
+        return instance;
     }
 
     /**
@@ -150,7 +172,6 @@ public class formMenu extends javax.swing.JFrame {
         jSeparator23 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -1285,7 +1306,7 @@ public class formMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1339, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1339, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1338,6 +1359,7 @@ public class formMenu extends javax.swing.JFrame {
 
         btn_asignaciones.setBackground(new java.awt.Color(255, 255, 255));
         btn_asignaciones.setForeground(new java.awt.Color(0, 0, 0));
+        controller.iniciar(3);
     }//GEN-LAST:event_btn_alumnosMouseClicked
 
     private void btn_profesoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_profesoresMouseClicked
@@ -1406,7 +1428,7 @@ public class formMenu extends javax.swing.JFrame {
         btn_asignaciones.setBackground(new java.awt.Color(0, 102, 204));
         btn_asignaciones.setForeground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_btn_asignacionesMouseClicked
-    
+
     private void btn_SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SalirMouseClicked
         System.exit(0);
     }//GEN-LAST:event_btn_SalirMouseClicked
@@ -1417,26 +1439,117 @@ public class formMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btn_cerrarSesionMouseClicked
 
+    public int pedirID() {
+        try {
+            int dato = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese una ID:", "Info", JOptionPane.INFORMATION_MESSAGE));
+            return dato;
+
+        } catch (NumberFormatException e) {
+            e.getMessage();
+        }
+        return 0;
+    }
+
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje, "Info", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public boolean confirmacion() {
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Deseas continuar con la eliminación?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        return opcion==JOptionPane.YES_OPTION;
+    }
+
+    /*|============ INICIO DE LA TABLA ALUMNOS ============|*/
+ /*|============ REGISTRAR ============|*/
     private void btn_registrarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarAlumnoActionPerformed
-        
+
     }//GEN-LAST:event_btn_registrarAlumnoActionPerformed
+    public Alumnos pedirDatosAlumno() {
+        String dni = txt_dni.getText().trim();
+        String nombre = txt_primerNombre.getText().trim();
+        String segNombre = txt_segundoNombre.getText().trim();
+        String apellidoP = txt_apellidoP.getText().trim();
+        String apellidoM = txt_apellidoM.getText().trim();
+        String idS = (txt_idAula.getText().trim());
+        if (txt_idAula.getText().isEmpty() || txt_idAula.getText().isBlank() || txt_idAula.getText().contains(".")) {
+            idS = "0";
+        }
+        int id = Integer.parseInt(idS);
+        return new Alumnos.Builder()
+                .dni(dni)
+                .primerNombre(nombre)
+                .segundoNombre(segNombre)
+                .primerApellido(apellidoP)
+                .segundoApellido(apellidoM)
+                .idAula(id)
+                .build();
 
+    }
+
+    public void onRegistrarAlumno(Runnable action) {
+        btn_registrarAlumno.addActionListener(e -> action.run());
+    }
+
+    /*|============ BUSCAR ============|*/
     private void btn_buscarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarAlumnoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btn_buscarAlumnoActionPerformed
+    public void onBuscarAlumno(Runnable action) {
+        btn_buscarAlumno.addActionListener(e -> action.run());
 
+    }
+
+    public void mostrarAlumno(Alumnos a) {
+        try {
+            DefaultTableModel tblAlumnosModel = new DefaultTableModel();
+            tblAlumnosModel.setColumnIdentifiers(new String[]{"ID", "DNI", "Nombres", "Apellidos", "ID_Aula"});
+            tblAlumnosModel.addRow(new Object[]{
+                a.getId_alumno(), a.getDni(), a.getPrimer_nombre() + " " + a.getSegundo_nombre(), a.getPrimer_apellido() + " " + a.getSegundo_apellido(), a.getId_aula()
+            });
+            tbl_alumnos.setModel(tblAlumnosModel);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+    }
+
+    /*|============ LISTAR ============|*/
     private void btn_listarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarAlumnosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_listarAlumnosActionPerformed
 
+    }//GEN-LAST:event_btn_listarAlumnosActionPerformed
+    public void onListarAlumnos(Runnable action) {
+        btn_listarAlumnos.addActionListener(e -> action.run());
+    }
+
+    public void mostrarLista(List<Alumnos> lista) {
+        DefaultTableModel tblAlumnosModel = new DefaultTableModel();
+        tblAlumnosModel.setColumnIdentifiers(new String[]{"ID", "DNI", "Nombres", "Apellidos", "ID_Aula"});
+        for (Alumnos a : lista) {
+            tblAlumnosModel.addRow(new Object[]{
+                a.getId_alumno(), a.getDni(), a.getPrimer_nombre() + " " + a.getSegundo_nombre(), a.getPrimer_apellido() + " " + a.getSegundo_apellido(), a.getId_aula()
+            });
+        }
+        tbl_alumnos.setModel(tblAlumnosModel);
+    }
+
+    /*|============ ACTUALIZAR ============|*/
     private void btn_ActualizarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarAlumnoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btn_ActualizarAlumnoActionPerformed
 
+    public void onActualizarAlumnos(Runnable action) {
+        btn_ActualizarAlumno.addActionListener(e -> action.run());
+    }
+
+    /*|============ ELIMINAR ============|*/
     private void btn_eliminarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarAlumnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarAlumnoActionPerformed
+    public void onEliminarAlumno(Runnable action) {
+        btn_eliminarAlumno.addActionListener(e -> action.run());
+    }
 
+    /*|============ FIN DE LA TABLA ALUMNOS ============|*/
     private void btn_registrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarProfesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarProfesorActionPerformed

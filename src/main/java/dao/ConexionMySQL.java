@@ -21,6 +21,7 @@ public class ConexionMySQL {
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error al momento de conectar: " + ex.getMessage());
         }
+        System.out.println("Conexión establecida");
     }
 
     //para obtener la instancia única

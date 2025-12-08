@@ -8,11 +8,13 @@ import java.sql.SQLException;
 
 public class AuthService extends ConexionMySQL {
 
+    Connection conec = ConexionMySQL.getInstancia().getConexion();
+
     public boolean login(String usuario, String contrasenha) {
         String sql = "SELECT COUNT(*) FROM administradores WHERE usuario=? AND contrasenha=?";
 
-        try (Connection conn = getConexion(); 
-                PreparedStatement pst = conn.prepareStatement(sql)) {
+        try (/*Connection conn = getConexion(); */
+                PreparedStatement pst = conec.prepareStatement(sql)) {
 
             pst.setString(1, usuario);
             pst.setString(2, contrasenha);

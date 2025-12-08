@@ -8,6 +8,7 @@ import patterns.Facade.AlumnosFacade;
 import patterns.Facade.IFacade;
 import patterns.Proxy.SecureDAOProxy;
 import view.AlumnosView;
+import view.formMenu;
 
 public class ModuloAlumnosStrategy implements IModuloStrategy {
 
@@ -15,7 +16,7 @@ public class ModuloAlumnosStrategy implements IModuloStrategy {
     public void iniciar() {
         IBaseDAO<Alumnos> daoSeguro = new SecureDAOProxy<>(new AlumnosDAO());
         IFacade<Alumnos> facade = new AlumnosFacade(daoSeguro);
-        AlumnosView view = new AlumnosView();
+        formMenu view = formMenu.getInstance();
         AlumnosController controller = new AlumnosController(view, facade);
         controller.iniciar();
     }

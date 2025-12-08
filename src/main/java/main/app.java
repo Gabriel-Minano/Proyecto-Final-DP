@@ -4,6 +4,7 @@ import controller.MainController;
 import java.util.Scanner;
 import patterns.Proxy.LoginFacade;
 import view.MainView;
+import view.formLogin;
 
 /**
  *
@@ -12,7 +13,7 @@ import view.MainView;
 public class app {
 
     public static void main(String[] args) {
-        LoginFacade login = new LoginFacade();
+       /* LoginFacade login = new LoginFacade();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("===== LOGIN ADMINISTRADOR =====");
@@ -27,10 +28,12 @@ public class app {
             return;
         }
 
-        // Sesión confirmada = SecurityContext.iniciarSesion()
+      /*  // Sesión confirmada = SecurityContext.iniciarSesion()
         MainView mainView = new MainView();
         MainController mainController = new MainController(mainView);
 
-        mainController.iniciar();
+        mainController.iniciar();*/
+       formLogin login = new formLogin();
+       login.setVisible(true);
     }
 }

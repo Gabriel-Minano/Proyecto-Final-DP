@@ -9,13 +9,14 @@ import patterns.Strategy.ModuloAulasStrategy;
 import patterns.Strategy.ModuloProfesoresStrategy;
 import patterns.Strategy.ModuloAula_profesorStrategy;
 import view.MainView;
+import view.formMenu;
 
 public class MainController {
 
-    private final MainView mainView;
+    private final formMenu mainView;
     private final Map<Integer, IModuloStrategy> estrategias = new HashMap<>();
 
-    public MainController(MainView mainView) {
+    public MainController(formMenu mainView) {
         this.mainView = mainView;
 
         //Estrategias
@@ -24,25 +25,15 @@ public class MainController {
         estrategias.put(3, new ModuloAlumnosStrategy());
         estrategias.put(4, new ModuloAulasStrategy());
         estrategias.put(5, new ModuloAula_profesorStrategy());
+        System.out.println("Iniciando módulo MainController");
     }
 
-    public void iniciar() {
+    public void iniciar(int opcion) {
 
-        while (true) {
-            int opcion = mainView.mostrarMenuPrincipal();
-            if (opcion == 0) {
-                System.out.println("Saliendo...");
-                return;
-            }
+        IModuloStrategy estrategia = estrategias.get(opcion);
 
-            IModuloStrategy estrategia = estrategias.get(opcion);
-
-            if (estrategia != null) {
-                estrategia.iniciar();
-            } else {
-                System.out.println("Opción inválida.");
-            }
+        if (estrategia != null) {
+            estrategia.iniciar();
         }
     }
-
 }
