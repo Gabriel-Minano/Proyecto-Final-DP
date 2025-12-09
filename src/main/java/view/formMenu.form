@@ -3,7 +3,6 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -351,8 +350,24 @@
                 </Constraint>
               </Constraints>
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-                <Property name="useNullLayout" type="boolean" value="false"/>
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jLabel24" pref="1090" max="32767" attributes="0"/>
+                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                          <Component id="jLabel24" min="-2" pref="70" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel24">
@@ -370,11 +385,6 @@
                     <Property name="text" type="java.lang.String" value="BIENVENIDO"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="20" width="1090" height="70"/>
-                    </Constraint>
-                  </Constraints>
                 </Component>
               </SubComponents>
             </Container>
@@ -906,15 +916,17 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel10" max="32767" attributes="0"/>
-                      <Component id="jSeparator9" max="32767" attributes="0"/>
+                      <Component id="jSeparator9" min="-2" pref="1130" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jPanel8" max="32767" attributes="0"/>
-                              <Component id="jPanel7" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jPanel7" max="32767" attributes="0"/>
+                                  <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -925,10 +937,10 @@
                           <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                           <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="jPanel8" max="32767" attributes="0"/>
+                          <Component id="jPanel8" pref="191" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                           <Component id="jPanel7" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="280" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1186,37 +1198,17 @@
                               <Component id="jSeparator14" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
-                              <Component id="txt_apellidoPProfesor" min="-2" pref="242" max="-2" attributes="0"/>
-                              <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
-                              <Component id="txt_apellidoMProfesor" min="-2" pref="242" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
                               <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
                               <Component id="jSeparator12" min="-2" pref="240" max="-2" attributes="0"/>
                               <EmptySpace min="240" pref="240" max="-2" attributes="0"/>
                               <Component id="jSeparator15" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="126" pref="126" max="-2" attributes="0"/>
-                              <Component id="txt_primEspecialidad" min="-2" pref="242" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
-                              <Component id="jSeparator16" min="-2" pref="240" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
                               <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                               <Component id="jLabel17" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
-                              <Component id="txt_dniProfesor" min="-2" pref="242" max="-2" attributes="0"/>
-                              <EmptySpace min="58" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txt_primEspecialidad" min="-2" pref="242" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                               <Component id="txt_segEspecialidad" min="-2" pref="242" max="-2" attributes="0"/>
@@ -1226,6 +1218,28 @@
                               <Component id="jSeparator13" min="-2" pref="240" max="-2" attributes="0"/>
                               <EmptySpace min="230" pref="230" max="-2" attributes="0"/>
                               <Component id="jSeparator10" min="-2" pref="240" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                                      <Component id="txt_apellidoPProfesor" min="-2" pref="242" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
+                              <Component id="txt_apellidoMProfesor" min="-2" pref="242" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="txt_dniProfesor" min="-2" pref="242" max="-2" attributes="0"/>
+                                  <Component id="jSeparator16" min="-2" pref="240" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1257,18 +1271,19 @@
                                   <Component id="jSeparator15" min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_primEspecialidad" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_dniProfesor" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jSeparator16" min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_dniProfesor" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                   <Component id="txt_segEspecialidad" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_primEspecialidad" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jSeparator13" min="-2" pref="20" max="-2" attributes="0"/>
                                   <Component id="jSeparator10" min="-2" pref="20" max="-2" attributes="0"/>

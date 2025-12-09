@@ -107,6 +107,9 @@ public class AlumnosView {
             mostrarAlumno(a);
         }
     }
+    public void mostrarLista2(List<Alumnos> lista){
+    
+    }
 
     public void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);

@@ -10,7 +10,7 @@ public class LoginFacade {
             System.out.println("Inicio de sesión exitoso.");
             return true;
         }
-        System.out.println("Usuario o contraseña incorrectos.");
+        System.out.println("Error al iniciar sesión. Usuario o contraseña incorrectos.");
         return false;
     }
 }

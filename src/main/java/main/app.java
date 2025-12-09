@@ -1,9 +1,7 @@
 package main;
 
-import controller.MainController;
-import java.util.Scanner;
-import patterns.Proxy.LoginFacade;
-import view.MainView;
+import javax.swing.UnsupportedLookAndFeelException;
+import view.formLogin;
 
 /**
  *
@@ -12,25 +10,29 @@ import view.MainView;
 public class app {
 
     public static void main(String[] args) {
-        LoginFacade login = new LoginFacade();
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("===== LOGIN ADMINISTRADOR =====");
-        System.out.print("Usuario: ");
-        String user = sc.nextLine();
-
-        System.out.print("Contraseña: ");
-        String pass = sc.nextLine();
-
-        if (!login.iniciarSesion(user, pass)) {
-            System.out.println("No se pudo iniciar sesión. Saliendo...");
-            return;
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
+            ex.printStackTrace();
         }
 
-        // Sesión confirmada = SecurityContext.iniciarSesion()
-        MainView mainView = new MainView();
-        MainController mainController = new MainController(mainView);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                // Instanciar la vista
+                formLogin view = new formLogin();
 
-        mainController.iniciar();
+                // Instanciar el controlador y pasarle la vista
+                //Controlador miControlador = new Controlador(view);
+                // Hacer visible la ventana
+                view.setVisible(true);
+            }
+        });
     }
 }
