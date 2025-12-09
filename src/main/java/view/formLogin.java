@@ -20,7 +20,8 @@ public class formLogin extends javax.swing.JFrame {
         initComponents();
         setTitle("Inicia sesión");
         setLocationRelativeTo(null);
-        //setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        System.out.println("Creando instancia de formLogin");
     }
 
     /**
@@ -46,7 +47,6 @@ public class formLogin extends javax.swing.JFrame {
         btn_ingresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
         jPanel1.setLayout(new java.awt.GridBagLayout());

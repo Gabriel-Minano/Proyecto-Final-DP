@@ -22,7 +22,6 @@ public class app {
             ex.printStackTrace();
         }
 
-        // Ejecutar en el hilo de despacho de eventos de Swing (buenas prácticas)
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
