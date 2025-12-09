@@ -1,13 +1,14 @@
 package dao;
 
 import java.sql.*;
+import java.util.Random;
 
 public class ConexionMySQL {
 
     public static final String URL = "jdbc:mysql://localhost:3306/colegio";
     public static final String USER = "root";
     public static final String PASS = "";
-
+    Random r = new Random();
     //instancia única
     private static ConexionMySQL instancia;
 
@@ -21,11 +22,12 @@ public class ConexionMySQL {
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error al momento de conectar: " + ex.getMessage());
         }
-        System.out.println("Conexión establecida");
+        int randomInt = r.nextInt();
+        System.out.println("Conexión establecida: " + randomInt);
     }
 
     //para obtener la instancia única
-        public static synchronized ConexionMySQL getInstancia() {
+    public static synchronized ConexionMySQL getInstancia() {
         if (instancia == null) {
             instancia = new ConexionMySQL();
         }

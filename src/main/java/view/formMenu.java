@@ -9,6 +9,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Alumnos;
+import model.Aula_profesor;
+import model.Aulas;
+import model.Profesores;
 
 /**
  *
@@ -25,6 +28,7 @@ public class formMenu extends javax.swing.JFrame {
     private formMenu() {
         initComponents();
         setTitle("Menú de gestión");
+        setLocationRelativeTo(null);
         //setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         pnl_Alumnos.setVisible(false);
         pnl_Aulas.setVisible(false);
@@ -299,7 +303,6 @@ public class formMenu extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.CardLayout());
 
         pnl_inicio.setBackground(new java.awt.Color(0, 102, 204));
-        pnl_inicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel24.setBackground(new java.awt.Color(255, 255, 255));
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -307,7 +310,22 @@ public class formMenu extends javax.swing.JFrame {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("BIENVENIDO");
         jLabel24.setOpaque(true);
-        pnl_inicio.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1090, 70));
+
+        javax.swing.GroupLayout pnl_inicioLayout = new javax.swing.GroupLayout(pnl_inicio);
+        pnl_inicio.setLayout(pnl_inicioLayout);
+        pnl_inicioLayout.setHorizontalGroup(
+            pnl_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_inicioLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+        );
+        pnl_inicioLayout.setVerticalGroup(
+            pnl_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_inicioLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jPanel4.add(pnl_inicio, "card2");
 
@@ -770,33 +788,16 @@ public class formMenu extends javax.swing.JFrame {
                 .addGap(240, 240, 240)
                 .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel13)
-                .addGap(44, 44, 44)
-                .addComponent(txt_apellidoPProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(jLabel14)
-                .addGap(47, 47, 47)
-                .addComponent(txt_apellidoMProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(160, 160, 160)
                 .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(240, 240, 240)
                 .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel15)
-                .addGap(126, 126, 126)
-                .addComponent(txt_primEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(txt_dniProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_primEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
                 .addComponent(jLabel16)
                 .addGap(21, 21, 21)
                 .addComponent(txt_segEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -805,6 +806,23 @@ public class formMenu extends javax.swing.JFrame {
                 .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(230, 230, 230)
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(44, 44, 44)
+                        .addComponent(txt_apellidoPProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel15))
+                .addGap(70, 70, 70)
+                .addComponent(jLabel14)
+                .addGap(47, 47, 47)
+                .addComponent(txt_apellidoMProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_dniProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -830,16 +848,17 @@ public class formMenu extends javax.swing.JFrame {
                     .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(txt_primEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                    .addComponent(txt_dniProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
-                    .addComponent(txt_dniProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
-                    .addComponent(txt_segEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_segEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_primEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -849,15 +868,14 @@ public class formMenu extends javax.swing.JFrame {
         pnl_Profesores.setLayout(pnl_ProfesoresLayout);
         pnl_ProfesoresLayout.setHorizontalGroup(
             pnl_ProfesoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jSeparator9)
-            .addComponent(jScrollPane2)
+            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(pnl_ProfesoresLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(pnl_ProfesoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(50, 50, 50))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pnl_ProfesoresLayout.setVerticalGroup(
             pnl_ProfesoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -866,10 +884,10 @@ public class formMenu extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                 .addGap(53, 53, 53)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1382,7 +1400,7 @@ public class formMenu extends javax.swing.JFrame {
 
         btn_asignaciones.setBackground(new java.awt.Color(255, 255, 255));
         btn_asignaciones.setForeground(new java.awt.Color(0, 0, 0));
-
+        controller.iniciar(2);
     }//GEN-LAST:event_btn_profesoresMouseClicked
 
     private void btn_aulasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_aulasMouseClicked
@@ -1405,6 +1423,7 @@ public class formMenu extends javax.swing.JFrame {
 
         btn_asignaciones.setBackground(new java.awt.Color(255, 255, 255));
         btn_asignaciones.setForeground(new java.awt.Color(0, 0, 0));
+        controller.iniciar(4);
     }//GEN-LAST:event_btn_aulasMouseClicked
 
     private void btn_asignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_asignacionesMouseClicked
@@ -1438,12 +1457,14 @@ public class formMenu extends javax.swing.JFrame {
         ir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_cerrarSesionMouseClicked
-
+    /*|============ MÉTODOS PARA MOSTRAR MENSAJE Y OBTENER CONFIRMACIONES O ID ============|*/
     public int pedirID() {
         try {
             int dato = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese una ID:", "Info", JOptionPane.INFORMATION_MESSAGE));
+            if (dato == 0) {
+                mostrarMensaje("Esa ID no es válida");
+            }
             return dato;
-
         } catch (NumberFormatException e) {
             e.getMessage();
         }
@@ -1456,10 +1477,11 @@ public class formMenu extends javax.swing.JFrame {
 
     public boolean confirmacion() {
         int opcion = JOptionPane.showConfirmDialog(null, "¿Deseas continuar con la eliminación?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        return opcion==JOptionPane.YES_OPTION;
+        return opcion == JOptionPane.YES_OPTION;
     }
 
-    /*|============ INICIO DE LA TABLA ALUMNOS ============|*/
+    /*|============ FIN DE LOS MÉTODOS DE MENSAJE Y CONFIRMACIONES ============|*/
+ /*|============ INICIO DE LA TABLA ALUMNOS ============|*/
  /*|============ REGISTRAR ============|*/
     private void btn_registrarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarAlumnoActionPerformed
 
@@ -1471,10 +1493,15 @@ public class formMenu extends javax.swing.JFrame {
         String apellidoP = txt_apellidoP.getText().trim();
         String apellidoM = txt_apellidoM.getText().trim();
         String idS = (txt_idAula.getText().trim());
-        if (txt_idAula.getText().isEmpty() || txt_idAula.getText().isBlank() || txt_idAula.getText().contains(".")) {
-            idS = "0";
+        int id = 0;
+        try {
+            id = Integer.parseInt(idS);
+        } catch (NumberFormatException e) {
+            System.out.println("No se pudo convertir el id proporcionada por el usuario para insertar o actualizar el registro del alumno: " + e.getMessage());
         }
-        int id = Integer.parseInt(idS);
+        if (dni.isBlank() || nombre.isBlank() || apellidoP.isBlank() || apellidoM.isBlank() || id == 0) {
+            return null;
+        }
         return new Alumnos.Builder()
                 .dni(dni)
                 .primerNombre(nombre)
@@ -1500,17 +1527,12 @@ public class formMenu extends javax.swing.JFrame {
     }
 
     public void mostrarAlumno(Alumnos a) {
-        try {
-            DefaultTableModel tblAlumnosModel = new DefaultTableModel();
-            tblAlumnosModel.setColumnIdentifiers(new String[]{"ID", "DNI", "Nombres", "Apellidos", "ID_Aula"});
-            tblAlumnosModel.addRow(new Object[]{
-                a.getId_alumno(), a.getDni(), a.getPrimer_nombre() + " " + a.getSegundo_nombre(), a.getPrimer_apellido() + " " + a.getSegundo_apellido(), a.getId_aula()
-            });
-            tbl_alumnos.setModel(tblAlumnosModel);
-        } catch (Exception e) {
-            e.getMessage();
-        }
-
+        DefaultTableModel tblAlumnosModel = new DefaultTableModel();
+        tblAlumnosModel.setColumnIdentifiers(new String[]{"ID", "DNI", "Nombres", "Apellidos", "ID_Aula"});
+        tblAlumnosModel.addRow(new Object[]{
+            a.getId_alumno(), a.getDni(), a.getPrimer_nombre() + " " + a.getSegundo_nombre(), a.getPrimer_apellido() + " " + a.getSegundo_apellido(), a.getId_aula()
+        });
+        tbl_alumnos.setModel(tblAlumnosModel);
     }
 
     /*|============ LISTAR ============|*/
@@ -1521,7 +1543,7 @@ public class formMenu extends javax.swing.JFrame {
         btn_listarAlumnos.addActionListener(e -> action.run());
     }
 
-    public void mostrarLista(List<Alumnos> lista) {
+    public void mostrarListaAlumno(List<Alumnos> lista) {
         DefaultTableModel tblAlumnosModel = new DefaultTableModel();
         tblAlumnosModel.setColumnIdentifiers(new String[]{"ID", "DNI", "Nombres", "Apellidos", "ID_Aula"});
         for (Alumnos a : lista) {
@@ -1550,70 +1572,258 @@ public class formMenu extends javax.swing.JFrame {
     }
 
     /*|============ FIN DE LA TABLA ALUMNOS ============|*/
+ /*|============ INICIO DE LA TABLA PROFESORES ============|*/
+ /*|============ REGISTRAR ============|*/
     private void btn_registrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarProfesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarProfesorActionPerformed
+    public Profesores pedirDatosProfesor() {
+        String dni = txt_dniProfesor.getText().trim();
+        String nombre = txt_primerNombreProfesor.getText().trim();
+        String segNombre = txt_segundoNombreProfesor.getText().trim();
+        String apellidoP = txt_apellidoPProfesor.getText().trim();
+        String apellidoM = txt_apellidoMProfesor.getText().trim();
+        String especialidad = txt_primEspecialidad.getText().trim();
+        String segEspecialidad = txt_segEspecialidad.getText().trim();
+        if (dni.isBlank() || nombre.isBlank() || apellidoP.isBlank() || apellidoM.isBlank() || especialidad.isBlank()) {
+            return null;
+        }
+        return new Profesores.Builder()
+                .dni(dni)
+                .primerNombre(nombre)
+                .segundoNombre(segNombre)
+                .primerApellido(apellidoP)
+                .segundoApellido(apellidoM)
+                .especialidad(especialidad)
+                .segundaEspecialidad(segEspecialidad)
+                .build();
+    }
 
+    public void onRegistrarProfesor(Runnable action) {
+        btn_registrarProfesor.addActionListener(e -> action.run());
+    }
+
+    /*|============ BUSCAR ============|*/
     private void btn_buscarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarProfesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarProfesorActionPerformed
+    public void mostrarProfesor(Profesores p) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"ID", "DNI", "Nombres", "Apellidos", "Especialidad", "Segunda especialidad"});
+        model.addRow(new Object[]{
+            p.getId_profesor(), p.getDni(), p.getPrimer_nombre() + " " + p.getSegundo_nombre(), p.getPrimer_apellido() + " " + p.getSegundo_apellido(), p.getEspecialidad(), p.getSegunda_especialidad()
+        });
+        tbl_profesor.setModel(model);
+    }
 
+    public void onBuscarProfesor(Runnable action) {
+        btn_buscarProfesor.addActionListener(e -> action.run());
+    }
+
+    /*|============ LISTAR ============|*/
     private void btn_listarProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarProfesoresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_listarProfesoresActionPerformed
+    public void mostrarListaProfesor(List<Profesores> lista) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"ID", "DNI", "Nombres", "Apellidos", "Especialidad", "Segunda especialidad"});
+        for (Profesores p : lista) {
+            model.addRow(new Object[]{
+                p.getId_profesor(), p.getDni(), p.getPrimer_nombre() + " " + p.getSegundo_nombre(), p.getPrimer_apellido() + " " + p.getSegundo_apellido(), p.getEspecialidad(), p.getSegunda_especialidad()
+            });
+        }
+        tbl_profesor.setModel(model);
+    }
 
+    public void onListarProfesores(Runnable action) {
+        btn_listarProfesores.addActionListener(e -> action.run());
+    }
+
+    /*|============ ACTUALIZAR ============|*/
     private void btn_ActualizarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarProfesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ActualizarProfesorActionPerformed
+    public void onActualizarProfesor(Runnable action) {
+        btn_ActualizarProfesor.addActionListener(e -> action.run());
+    }
 
+    /*|============ ELIMINAR ============|*/
     private void btn_eliminarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarProfesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarProfesorActionPerformed
+    public void onEliminarProfesor(Runnable action) {
+        btn_eliminarProfesor.addActionListener(e -> action.run());
 
+        /*|============ FIN DE LA TABLA PROFESORES ============|*/    }
+
+    /*|============ INICIO DE LA TABLA AULAS ============|*/
+ /*|============ REGISTRAR ============|*/
     private void btn_registrarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarAulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarAulaActionPerformed
 
+    public Aulas pedirDatosAula() {
+        String grado = txt_grado.getText().trim();
+        String seccion = txt_seccion.getText().trim();
+        Aulas aula = new Aulas();
+        aula.setSeccion(seccion);
+        aula.setGrado(grado);
+        if (aula.getSeccion().isBlank() || aula.getGrado().isBlank()) {
+            return null;
+        }
+        return aula;
+    }
+
+    public void onRegistrarAula(Runnable action) {
+        btn_registrarAula.addActionListener(e -> action.run());
+    }
+
+    /*|============ BUSCAR ============|*/
     private void btn_buscarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarAulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarAulaActionPerformed
+    public void mostrarAula(Aulas a) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"ID", "Grado", "Sección"});
+        model.addRow(new Object[]{
+            a.getId_aula(), a.getGrado(), a.getSeccion()
+        });
+        tbl_aulas.setModel(model);
+    }
 
+    public void onBuscarAula(Runnable action) {
+        btn_buscarAula.addActionListener(e -> action.run());
+    }
+
+    /*|============ LISTAR ============|*/
     private void btn_listarAulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarAulasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_listarAulasActionPerformed
+    public void mostrarListaAulas(List<Aulas> aula) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"ID", "Grado", "Sección"});
+        for (Aulas aulas : aula) {
+            model.addRow(new Object[]{
+                aulas.getId_aula(), aulas.getGrado(), aulas.getSeccion()
+            });
+        }
+        tbl_aulas.setModel(model);
+    }
 
+    public void onListarAulas(Runnable action) {
+        btn_listarAulas.addActionListener(e -> action.run());
+    }
+
+    /*|============ ACTUALIZAR ============|*/
     private void btn_ActualizarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarAulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ActualizarAulaActionPerformed
+    public void onActualizarAula(Runnable action) {
+        btn_ActualizarAula.addActionListener(e -> action.run());
+    }
 
+    /*|============ ELIMINAR ============|*/
     private void btn_eliminarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarAulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarAulaActionPerformed
-
+    public void onEliminarAula(Runnable action) {
+        btn_eliminarAula.addActionListener(e -> action.run());
+    }
     private void txt_seccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_seccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_seccionActionPerformed
+    /*|============ FIN DE LA TABLA AULAS ============|*/
 
+ /*|============ INICIO DE LA TABLA ASIGNACIONES ============|*/
+ /*|============ REGISTRAR ============|*/
     private void btn_registrarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarAsignacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarAsignacionActionPerformed
+    public Aula_profesor pedirDatosAsignacion() {
+        //Instancia de Asignacion
+        Aula_profesor ap = new Aula_profesor();
 
+        //Creación de objetos aula y profesor
+        Aulas a = new Aulas();
+        Profesores p = new Profesores();
+
+        //Creación de variables y asignación de los datos recogidos
+        String textoAula = txt_idAulaAsignacion.getText().trim();
+        String textoProfesor = txt_idProfesorAsignacion.getText().trim();
+        int idAula = 0;
+        int idProfesor = 0;
+
+        //En caso no se pueda lanzará una excepción y mantendrá en 0 los valores de las id
+        try {
+            idAula = Integer.parseInt(textoAula);
+            idProfesor = Integer.parseInt(textoProfesor);
+        } catch (NumberFormatException e) {
+            System.out.println("Error en registrarAsignacion: " + e.getMessage());
+        }
+        //Si siguen siendo 0 retornará un objeto null
+        if (idAula == 0 || idProfesor == 0) {
+            return null;
+        }
+        //Si se logró obtener id legibles o utilizables las usará para setear el objeto
+        a.setId_aula(idAula);
+        p.setId_profesor(idProfesor);
+
+        ap.setAula(a);
+        ap.setProfesor(p);
+        return ap;
+    }
+
+    public void onRegistrarAsignacion(Runnable action) {
+        btn_registrarAsignacion.addActionListener(e -> action.run());
+    }
+
+    /*|============ BUSCAR ============|*/
     private void btn_buscarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarAsignacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarAsignacionActionPerformed
+    public void mostrarAsignacion(Aula_profesor ap) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"ID", "ID_Aula", "ID_Profesor"});
+        model.addRow(new Object[]{ap.getId_asignacion(), ap.getAula().getId_aula(), ap.getProfesor().getId_profesor()});
+        tbl_asignaciones.setModel(model);
+    }
 
+    public void onBuscarAsignacion(Runnable action) {
+        btn_buscarAsignacion.addActionListener(e -> action.run());
+    }
+
+    /*|============ LISTAR ============|*/
     private void btn_listarAsignacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listarAsignacionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_listarAsignacionesActionPerformed
+    public void mostrarListaAsignaciones(List<Aula_profesor> lista) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"ID", "ID_Aula", "ID_Profesor"});
+        for (Aula_profesor ap : lista) {
+            model.addRow(new Object[]{ap.getId_asignacion(), ap.getAula().getId_aula(), ap.getProfesor().getId_profesor()});
+        }
+        tbl_asignaciones.setModel(model);
+    }
 
+    public void onListarAsignaciones(Runnable action) {
+        btn_listarAsignaciones.addActionListener(e -> action.run());
+    }
+
+    /*|============ ACTUALIZAR ============|*/
     private void btn_ActualizarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarAsignacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ActualizarAsignacionActionPerformed
+    public void onActualizarAsignacion(Runnable action) {
+        btn_ActualizarAsignacion.addActionListener(e -> action.run());
+    }
 
+    /*|============ ELIMINAR ============|*/
     private void btn_eliminarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarAsignacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarAsignacionActionPerformed
-
+    public void onEliminarAsignacion(Runnable action) {
+        btn_eliminarAsignacion.addActionListener(e -> action.run());
+    }
     private void txt_idProfesorAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idProfesorAsignacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_idProfesorAsignacionActionPerformed

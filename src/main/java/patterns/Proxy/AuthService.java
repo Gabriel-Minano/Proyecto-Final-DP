@@ -6,9 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AuthService extends ConexionMySQL {
+public class AuthService {
 
     Connection conec = ConexionMySQL.getInstancia().getConexion();
+
+    public AuthService() {
+        System.out.println("Iniciando Servicio de autenticación: AuthService");
+    }
 
     public boolean login(String usuario, String contrasenha) {
         String sql = "SELECT COUNT(*) FROM administradores WHERE usuario=? AND contrasenha=?";

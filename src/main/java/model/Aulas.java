@@ -1,11 +1,18 @@
 package model;
 
 public class Aulas {
-private int id_aula;
-private String grado;
-private String seccion;
+
+    private int id_aula;
+    private String grado;
+    private String seccion;
 
     public Aulas() {
+    }
+
+    public Aulas(int id_aula, String grado, String seccion) {
+        this.id_aula = id_aula;
+        this.grado = grado;
+        this.seccion = seccion;
     }
 
     public String getSeccion() {
